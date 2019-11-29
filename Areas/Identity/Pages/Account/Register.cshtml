@@ -1,0 +1,190 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Become An Instructor";
+}
+
+<h1 style="font-family:'Footlight MT'">Become An Instructor</h1>
+
+<div class="text-center" id="title" style="padding:20px">
+    <h2 style="font-family:'Footlight MT'; padding-bottom:20px">Why Become a Driving Instructor</h2>
+
+    <p style="text-align:left">
+        Being a driving instructor is a brilliant job. You can earn good money. If you have children then this is the perfect job to fit in around school hours. You could drop them off at school then go and do lesson from 09:30-11:30, come home and have lunch and then pick your children up on the way back from your second lesson.
+        Most driving instructors work around 20 to 25 hours a week. It’s mainly up to you. One of the great perks of being a driving instructor is that you get much longer lunch breaks than in most jobs.
+    </p>
+    <p style="text-align:left">
+        Imagine that you do two hour lessons at at 09:30 am to 11:30 am, 01:00 pm to 03:00 pm and 05:00 pm to 07:00 pm. You’d have 90 minutes between the first two lessons and two hours between the second and third. You can go home, go for a walk or whatever you want to do.
+        Pay for driving instructors varies depending on the number of clients they have and the type of driver training they provide. For example, you can earn more by teaching defensive driving courses, corporate drivers or heavy vehicle drivers.
+        Driving instructors usually earn between $40,000 and $80,000 a year.
+    </p>
+    <p style="text-align:left">
+        If these things are exciting to you, then you should be a driving instructor.
+    </p>
+
+    <div class="row" style="width:70%; padding:20px">
+
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" >
+
+            <h4 style="text-align:left; font-family:'Footlight MT'; text-decoration:underline; font-weight:bold">Register here to become one of our Instructors!</h4>
+            <br />
+            <h5 style="text-align:left; font-family:'Footlight MT'">PERSONAL DETAILS</h5>
+            <br />
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            @*<div class="col-md-6">*@
+            <div class="row">
+                <div class="form-group; col-md-6">
+                    <label asp-for="Input.FirstName"></label>
+                    <input asp-for="Input.FirstName" class="form-control" />
+                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6">
+                    <label asp-for="Input.LastName"></label>
+                    <input asp-for="Input.LastName" class="form-control" />
+                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.Suburb"></label>
+                    <input asp-for="Input.Suburb" class="form-control" />
+                    <span asp-validation-for="Input.Suburb" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.City"></label>
+                    <input asp-for="Input.City" class="form-control" />
+                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.PhoneNumber"></label>
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.EmailAddress"></label>
+                    <input asp-for="Input.EmailAddress" class="form-control" />
+                    <span asp-validation-for="Input.EmailAddress" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.Password"></label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.ConfirmPassword"></label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <h5 style="text-align:left; font-family:'Footlight MT'; margin-top:35px;">LICENSE DETAILS</h5>
+
+            <div class="row">
+                <div class="form-group; col-md-8" style="margin-top:25px;">
+                    <label asp-for="Input.LicenseNumber"></label>
+                    <input asp-for="Input.LicenseNumber" class="form-control" />
+                    <span asp-validation-for="Input.LicenseNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-4" style="width:30% ;margin-top:25px;">
+                    <label asp-for="Input.LicenseVersion"></label>
+                    <input asp-for="Input.LicenseVersion" class="form-control" />
+                    <span asp-validation-for="Input.LicenseVersion" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.IsEndorsed"></label>
+                    <input asp-for="Input.IsEndorsed" class="form-control" />
+                    <span asp-validation-for="Input.IsEndorsed" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-6" style="margin-top:25px;">
+                    <label asp-for="Input.PricePerHour"></label>
+                    <input asp-for="Input.PricePerHour" class="form-control" />
+                    <span asp-validation-for="Input.PricePerHour" class="text-danger"></span>
+                </div>
+
+                <div class="form-group; col-md-12" style="margin-top:25px;">
+                    <label asp-for="Input.AvailableTimes"></label>
+                    <input asp-for="Input.AvailableTimes" class="form-control" />
+                    <span asp-validation-for="Input.AvailableTimes" class="text-danger"></span>
+                </div>
+
+                <h5 class="col-md-12" style="margin-top:35px; font-family:'Footlight MT'; text-align:left">DAYS AVAILABILITY</h5>
+
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Monday"></label>
+                    <input asp-for="Input.Monday" class="form-control" />
+                    <span asp-validation-for="Input.Monday" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Tuesday"></label>
+                    <input asp-for="Input.Tuesday" class="form-control" />
+                    <span asp-validation-for="Input.Tuesday" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Wednesday"></label>
+                    <input asp-for="Input.Wednesday" class="form-control" />
+                    <span asp-validation-for="Input.Wednesday" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Thursday"></label>
+                    <input asp-for="Input.Thursday" class="form-control" />
+                    <span asp-validation-for="Input.Thursday" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Friday"></label>
+                    <input asp-for="Input.Friday" class="form-control" />
+                    <span asp-validation-for="Input.Friday" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Saturday"></label>
+                    <input asp-for="Input.Saturday" class="form-control" />
+                    <span asp-validation-for="Input.Saturday" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width:14%; margin-top:25px;">
+                    <label asp-for="Input.Sunday"></label>
+                    <input asp-for="Input.Sunday" class="form-control" />
+                    <span asp-validation-for="Input.Sunday" class="text-danger"></span>
+                </div>
+
+                <br />
+
+                <div class="form-group; col-md-12" style="margin-top:25px">
+                    <label asp-for="Input.AboutInstructor"></label>
+                    <input asp-for="Input.AboutInstructor" class="form-control" style="height:100px;" />
+                    <span asp-validation-for="Input.AboutInstructor" class="text-danger"></span>
+                </div>
+
+                @*<div class="form-group; col-md-12" style="margin-top:25px">
+                    <label asp-for="Input.ImageFileName"></label>
+                    <input asp-for="Input.ImageFileName" class="form-control" />
+                    <span asp-validation-for="Input.ImageFileName" class="text-danger"></span>
+                </div>*@
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-primary">Register As Instructor</button>
+
+        </form>
+    </div>
+
+    
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
