@@ -1,0 +1,95 @@
+@using Microsoft.AspNetCore.Identity
+@using TheFinalSheDriverTrainingHub.Areas.Identity.Data
+@inject SignInManager<TheFinalSheDriverTrainingHubUser> SignInManager
+@inject UserManager<TheFinalSheDriverTrainingHubUser> UserManager
+
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            //IF NOT ADMIN
+            @if (!User.IsInRole("Admin"))
+            {
+                //Home Page
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                //Update Your Details Page
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="FindAnInstructor" asp-action="instructorIndex">Update Your Details</a>
+                </li>
+                //Logout Button
+                <li class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            }
+
+            //IF ADMIN
+            @if (User.IsInRole("Admin"))
+            {
+                //Home Page
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                //Instructor Details Page
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="AspNetUsers" asp-action="Index">Update Instructor Details</a>
+                </li>
+                //Admin Details Page
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="AspNetUsers" asp-action="adminIndex">View Admins</a>
+                </li>
+                //Manage Queries Page
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Queries" asp-action="Index">Manage Queries</a>
+                </li>
+                //Logout Button
+                <li class="nav-item">
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                </li>
+            }
+
+        }
+
+        //IF NOT SIGNED IN
+        else
+        {
+            //Home Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            </li>
+            //Find An Instructor Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="FindAnInstructor" asp-action="Index">Find An Instructor</a>
+            </li>
+            //Become An Instructor Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Become An Instructor</a>
+            </li>
+            //Rate An Instructor
+            @*<li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Create">Rate An Instructor</a>
+            </li>*@
+            //Resources Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Resources">Resources</a>
+            </li>
+            //About Us Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a>
+            </li>
+            //Contact Us Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Queries" asp-action="Create">Contact Us</a>
+            </li>
+            //Instructor Login Page
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Instructor Login</a>
+            </li>
+
+
+        }
+    </ul>

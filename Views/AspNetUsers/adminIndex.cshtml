@@ -1,0 +1,78 @@
+﻿@model IEnumerable<TheFinalSheDriverTrainingHub.Models.DB.AspNetUsers>
+
+@{
+    ViewData["Title"] = "adminIndex";
+}
+
+<h1 style="font-family:'Footlight MT'">Manage Admins</h1>
+
+<div id="title">
+    <table class="table">
+
+        <thead>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Suburb)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                if (item.IsAdmin == true)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Suburb)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        
+
+                        <td>
+
+                            <a asp-controller="AspNetUsers" asp-action="adminDetails" asp-route-id="@item.Id">Details</a> 
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+
+    </table>
+</div>

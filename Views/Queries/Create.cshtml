@@ -1,0 +1,79 @@
+﻿@model TheFinalSheDriverTrainingHub.Models.DB.Query
+
+@{
+    ViewData["Title"] = "Contact Us - The She Driver Training Hub";
+}
+
+<h1 style="padding-bottom:25px; font-family:'Footlight MT'">Contact Us</h1>
+
+<div style="padding-bottom:25px;">
+    <img src="~/Images/WebsiteImages/contactus.jpg" style="width:100%" height="300" />
+</div>
+
+<div class="text-center" id="title" style="padding:20px;">
+
+    <h3 style="font-family:Footlight MT; text-decoration:underline">We are here to help you!</h3>
+    <br />
+
+    <p style="text-align:left">
+        Based online, we serve the wider parts of the main cities including Auckland, Christchurch, Dunedin, Hamilton, Nelson, Wellington and Whangerei. Email us today and with our help, you are more likely to pass your driving test the first time.
+    </p>
+
+    <p style="text-align:left">
+        Please feel free to contact us via the following email address or leave us a message on the form below. We look forward to hearing from you.
+    </p>
+
+    <p style="text-align:left">
+        <b>Email : </b> infoTheSheDriverTrainingHub@gmail.com
+        <br />
+        <br />
+    </p>
+
+    <h4 style="text-align:left; text-decoration:underline">Web Query Form </h4>
+    <br />
+
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+
+            <form asp-action="Create" asp-controller="Queries" method="post" asp-route-returnurl="@ViewData["Contact Us - The She Driver Training Hub"]">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" required />
+                    <span  asp-validation-for="Name" class="text-danger" ></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" required/>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject" class="control-label"></label>
+                    <input asp-for="Subject" class="form-control" required />
+                    <span asp-validation-for="Subject" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Message" class="control-label"></label>
+                    <input asp-for="Message" class="form-control" required/>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input onclick="alert('Thank you for your query!')" type="submit" value="Send" class="btn btn-primary" />
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+

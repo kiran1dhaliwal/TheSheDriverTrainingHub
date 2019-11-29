@@ -1,0 +1,67 @@
+﻿@model TheFinalSheDriverTrainingHub.Models.DB.Review
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Review</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReviewId" />
+            <div class="form-group">
+                <label asp-for="InstructorFirstName" class="control-label"></label>
+                <input asp-for="InstructorFirstName" class="form-control" />
+                <span asp-validation-for="InstructorFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerEmail" class="control-label"></label>
+                <input asp-for="CustomerEmail" class="form-control" />
+                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstructionRating" class="control-label"></label>
+                <input asp-for="InstructionRating" class="form-control" />
+                <span asp-validation-for="InstructionRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comments" class="control-label"></label>
+                <input asp-for="Comments" class="form-control" />
+                <span asp-validation-for="Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BehaviourRating" class="control-label"></label>
+                <input asp-for="BehaviourRating" class="form-control" />
+                <span asp-validation-for="BehaviourRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceRating" class="control-label"></label>
+                <input asp-for="PriceRating" class="form-control" />
+                <span asp-validation-for="PriceRating" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="InstructorLastName" class="control-label"></label>
+                <input asp-for="InstructorLastName" class="form-control" />
+                <span asp-validation-for="InstructorLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

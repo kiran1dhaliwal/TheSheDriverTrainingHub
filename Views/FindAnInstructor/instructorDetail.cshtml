@@ -1,0 +1,165 @@
+﻿@model TheFinalSheDriverTrainingHub.Models.DB.AspNetUsers
+
+@{
+    ViewData["Title"] = "instructorDetail";
+}
+<script src="~/js/site.js"></script>
+
+<h1 style="font-family:'Footlight MT'">Manage Your Details</h1>
+
+<div id="title" style="padding:20px">
+    <h4>@(Model.FirstName) @(Model.LastName)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/Instructors/@Model.ImageFileName" width="200px" />
+        </dd>
+        <dt class="col-sm-2">
+            About Me
+        </dt>
+        <dd class="col-sm-10">
+            @Model.AboutInstructor
+        </dd>
+        <dt class="col-sm-2">
+            Area Covers
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Suburb, @Model.City
+        </dd>
+        <dt class="col-sm-2">
+            License Number
+        </dt>
+        <dd class="col-sm-10">
+            @Model.LicenseNumber
+        </dd>
+        <dt class="col-sm-2">
+            License Version
+        </dt>
+        <dd class="col-sm-10">
+            @Model.LicenseVersion
+        </dd>
+        <dt class="col-sm-2">
+            Cost Per Hour
+        </dt>
+        <dd class="col-sm-10">
+            @("$" + Model.PricePerHour)
+        </dd>
+        <dt class="col-sm-2">
+            Availabilty
+        </dt>
+        <dd class="col-sm-10">
+            Monday: @Availability(1)
+            <br />
+            Tueday: @Availability(2)
+            <br />
+            Wednesday: @Availability(3)
+            <br />
+            Thursday: @Availability(4)
+            <br />
+            Friday: @Availability(5)
+            <br />
+            Saturday: @Availability(6)
+            <br />
+            Sunday: @Availability(7)
+            <br />
+            Times Available: @Model.AvailableTimes
+        </dd>
+        <dt class="col-sm-2">
+            Contact Details
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PhoneNumber
+            <br />
+            @Model.Email
+        </dd>
+        <dt class="col-sm-2">
+            Rate Me
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/Images/WebsiteImages/5 Star.png" width="200px" />
+        </dd>
+
+        <br />
+        <br />
+
+    </dl>
+
+    <div>
+        <a asp-controller="FindAnInstructor" asp-action="instructorIndex"> <button>Back to List</button> </a>
+        <a asp-controller="FindAnInstructor" asp-action="instructorEdit" asp-route-id="@Model.Id"> <button>Go to Edit Details</button></a>
+    </div>
+
+</div>
+
+
+
+@functions
+{
+    public string Availability(int value)
+    {
+        string availability = "Not Available";
+
+        if (value == 1)
+        {
+            if (Model.Monday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        else if (value == 2)
+        {
+            if (Model.Tuesday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        else if (value == 3)
+        {
+            if (Model.Wednesday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        else if (value == 4)
+        {
+            if (Model.Thursday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        else if (value == 5)
+        {
+            if (Model.Friday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        else if (value == 6)
+        {
+            if (Model.Saturday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        else
+        {
+            if (Model.Sunday == true)
+            {
+                availability = "Available";
+            }
+        }
+
+        return availability;
+    }
+
+}
+

@@ -1,0 +1,115 @@
+﻿@model TheFinalSheDriverTrainingHub.Models.DB.AspNetUsers
+
+@{
+    ViewData["Title"] = "instructorEdit";
+}
+
+<h1 style="font-family:'Footlight MT'">Edit your Details</h1>
+<hr />
+<div class="row" id="title" style="padding:20px">
+    <div class="col-md-7">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Suburb" class="control-label"></label>
+                <input asp-for="Suburb" class="form-control" />
+                <span asp-validation-for="Suburb" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Monday" /> @Html.DisplayNameFor(model => model.Monday)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Tuesday" /> @Html.DisplayNameFor(model => model.Tuesday)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Wednesday" /> @Html.DisplayNameFor(model => model.Wednesday)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Thursday" /> @Html.DisplayNameFor(model => model.Thursday)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Friday" /> @Html.DisplayNameFor(model => model.Friday)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Saturday" /> @Html.DisplayNameFor(model => model.Saturday)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Sunday" /> @Html.DisplayNameFor(model => model.Sunday)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableTimes" class="control-label"></label>
+                <input asp-for="AvailableTimes" class="form-control" />
+                <span asp-validation-for="AvailableTimes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PricePerHour" class="control-label"></label>
+                <input asp-for="PricePerHour" class="form-control" />
+                <span asp-validation-for="PricePerHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AboutInstructor" class="control-label"></label>
+                <input asp-for="AboutInstructor" class="form-control" />
+                <span asp-validation-for="AboutInstructor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <br/>
+
+        <div>
+            <a asp-action="instructorIndex"> <button>Back to List</button> </a>
+            <a asp-controller="FindAnInstructor" asp-action="instructorDetail" asp-route-id="@Model.Id"> <button>Go to Details</button></a>
+        </div>
+
+    </div>    
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

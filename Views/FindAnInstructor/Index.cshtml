@@ -1,0 +1,124 @@
+﻿
+@model IEnumerable<TheFinalSheDriverTrainingHub.Models.DB.AspNetUsers>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 style="font-family:'Footlight MT'">Find An Instructor</h1>
+<div class="text-center" id="title">
+    <h2 style="font-family:'Footlight MT';padding-top:20px">Our Qualified Instructors</h2>
+    <p style="text-align:left; padding:20px">
+        Our instructors are professional, friendly, calm and courteous at all times. Our instructors are highly skilled and adaptive to the each pupil.
+        They are verified before being listed to ensure they are all qualified with NZTA. Driver training is organised directly with the instructors and they are willing to accomodate your needs.
+        We ensure that the instructors are New Zealand transport agency Approved and Qualified Course Providers, registerd Assessors and Testing Officer. We guarantee that they have flexible lesson options and are willing to go the extra mile for you to make sure that you become safe and confident driver.
+        The She Driver Training Hub is the answer to all your driver training requirements.
+    </p>
+
+    <div style="text-align:left; margin:20px ">
+        <a style="color:chocolate" asp-area="" asp-controller="Reviews" asp-action="Create"><b>Rate an Instructor</b></a>
+    </div>
+
+    <h4 style="font-family:'Footlight MT'; text-align:left; padding-left:20px">Search For An Instructor</h4>
+    @*13112019 CS Created a custom Search Form to search for instructors*@
+    <form action="" method="get" autocomplete="off" style="padding-left:20px">
+        <div class="row" style="text-align:left">
+            <div class="col-sm-10">
+                <input type="text" id="searchString" name="searchString" style="width:25em"
+                       onkeyup="XAjaxRequest(this.value);" placeholder="Name/Location/Price/Rating" />
+                <input id="searchButton" type="submit" value="Submit" />
+                <br />
+                <div id="suggestions" style="position:absolute; visibility:hidden; z-index:10"></div>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function XAjaxRequest(searchString) {
+            var oeSuggestions = document.getElementById("suggestions");
+            //clear the options before each query process
+            //Ref stackoverflow: https://stackoverflow.com/questions/3955229/remove-all-child-elements-of-a-dom-node-in-javascript
+            oeSuggestions.innerHTML = "";
+
+            if (searchString.length < 2) return;
+            var xmlhttp;
+            xmlhttp = new XMLHttpRequest();
+            var url = "/FindAnInstructor/IndexAJAX?searchString=" + searchString;
+            xmlhttp.open("GET", url, false);
+            xmlhttp.send();
+
+            //Improving the auto-suggest UI
+            var rawResponse = xmlhttp.responseText;
+            var oResponse = JSON.parse(rawResponse);
+            //alert(rawResponse);
+
+            for (i = 0; i < oResponse.length; i++) {
+                oeSuggestions.innerHTML += "<input type='button' value='" + oResponse[i] + "' onclick='XSubmit(this.value);' style='width:16em;' /><br />";
+            }
+            oeSuggestions.style.visibility = "visible";
+            //oeSuggestions.style.left = "14em";
+            oeSuggestions.style.width = "24em";
+        }
+
+        function XSubmit(searchString) {
+            var oeSearchString = document.getElementById("searchString");
+            oeSearchString.value = searchString;
+            document.getElementById("searchButton").click();
+        }
+    </script>
+    <table class="table" style="text-align:left">
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    About Me
+                </th>
+                <th>
+                    Cost
+                </th>
+                <th>
+                    Location
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                 if (item.IsAuthorised == true && item.IsAdmin == false)
+                 {
+                     <tr>
+                         <td>
+                             <img src="~/Images/Instructors/@item.ImageFileName" style="width:150px" />
+                         </td>
+                         <td>
+                             @item.FirstName @item.LastName
+                          </td>
+                         <td>
+                             @item.AboutInstructor
+                         </td>
+                         <td style="text-align:right">
+                             $@Math.Round((decimal)item.PricePerHour, 2)
+                         </td>
+                            <td>
+                             @item.City
+                         </td>
+                         <td>
+                            <a asp-controller="FindAnInstructor" asp-action="Details" asp-route-id="@item.Id"> <button>Details </button> </a>
+                         </td>
+                     </tr>
+                 }
+             }
+
+        </tbody>
+    </table>
+    <br />
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

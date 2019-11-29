@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TheFinalSheDriverTrainingHub.Models.DB.AspNetUsers>
+
+@{
+    ViewData["Title"] = "instructorIndex";
+}
+
+
+    <div class="text-center" id="title">
+
+        <br/>
+
+        <h1 style="font-family:'Footlight MT'">Manage your Details</h1>
+
+        <br/>
+
+        <table class="table" style="text-align:left">
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        About Me
+                    </th>
+                    <th>
+                        Cost
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {   //if (item.IsAuthorised == true && item.IsAdmin == false)
+                    if (item.UserName == User.Identity.Name)
+                    {
+                <tr>
+                    <td>
+                        <img src="~/Images/Instructors/@item.ImageFileName" style="width:150px" />
+                    </td>
+                    <td>
+                        @item.FirstName @item.LastName
+                    </td>
+                    <td>
+                        @item.AboutInstructor
+                    </td>
+                    <td style="text-align:right">
+                        $@Math.Round((decimal)item.PricePerHour, 2)
+                    </td>
+                    <td>
+                        @item.City
+                    </td>
+                    
+                    <td>
+                        <a asp-controller="FindAnInstructor" asp-action="instructorEdit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-controller="FindAnInstructor" asp-action="instructorDetail" asp-route-id="@item.Id">Details</a>                         
+                    </td>
+                </tr>
+                    }
+                }
+
+            </tbody>
+        </table>
+        <br />
+    </div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
